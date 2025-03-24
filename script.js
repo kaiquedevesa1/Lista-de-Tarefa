@@ -1,26 +1,32 @@
+let tarefas = [];
+
 function adicionarTarefa() {
   const inputTarefa = document.getElementById("inputTarefa");
-  let tarefa = inputTarefa.value.trim(); //trim tira os espacos do comeco e do fim
+  let tarefa = inputTarefa.value.trim();
 
-  const mensagem = document.querySelector("#mensagem");
+  const mensagem = document.getElementById("mensagem");
 
-  if (inputTarefa.value === "") {
-    let errorMensagem = "O campo de tarefa está vazio escreva algo";
-    mensagem.textContent = errorMensagem;
-    mensagem.classList.add("fail"); // Adiciona a classe corretamente
+  if (tarefa == "") {
+    let mensagemErro = "Digite uma tarefa para adicioná-la a sua lista!";
+    mensagem.textContent = mensagemErro;
   } else {
-    let sucessMensagem = "Tarefa adicionada com sucesso!";
-    mensagem.textContent = sucessMensagem;
-    mensagem.classList.add("sucess");
-    mensagem.classList.remove("fail");
-
-    const listaTarefas = document.getElementById("listaTarefas");
-    let novaTarefa = document.createElement("li");
-
-    novaTarefa.textContent = tarefa;
-    listaTarefas.appendChild(novaTarefa);
+    let mensagemSucesso = "Tarefa adicionada com sucesso!";
+    mensagem.textContent = mensagemSucesso;
+    tarefas.push(tarefa);
+    renderizarTarefas();
   }
 
-  //limpa o input do usuário
   inputTarefa.value = "";
+}
+
+function renderizarTarefas() {
+  const listaTarefas = document.getElementById("listaTarefas");
+  listaTarefas.innerHTML = "";
+
+  let i = 0;
+  for (i; i < tarefas.length; i++) {
+    let novaTarefa = document.createElement("li");
+    novaTarefa.textContent = tarefas[i];
+    listaTarefas.appendChild(novaTarefa);
+  }
 }
