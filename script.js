@@ -5,6 +5,7 @@ function adicionarTarefa() {
   let tarefa = inputTarefa.value.trim();
 
   const mensagem = document.getElementById("mensagem");
+  let limparLista = document.querySelector(".botao_lista");
 
   if (tarefa == "") {
     let mensagemErro = "Digite uma tarefa para adicioná-la a sua lista!";
@@ -14,6 +15,8 @@ function adicionarTarefa() {
     mensagem.textContent = mensagemSucesso;
     tarefas.push(tarefa);
     renderizarTarefas();
+    limparLista.classList.remove("botao_lista");
+    limparLista.classList.add("botao_limpa");
   }
 
   inputTarefa.value = "";

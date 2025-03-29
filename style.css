@@ -101,10 +101,14 @@ button.editar:hover {
 }
 
 .botao_lista {
-  background-color: #a34743;
+  display: none;
 }
 
 .botao_lista:hover {
   background-color: #60041a;
   color: #f4f0ea;
+}
+
+.botao_limpa {
+  background-color: #a34743;
 }
